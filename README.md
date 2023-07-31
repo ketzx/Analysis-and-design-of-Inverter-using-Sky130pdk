@@ -1,1 +1,1 @@
-# ANALYSIS AND DESIGN OF INVERTER
+# Analysis and Design of Inverter
