@@ -83,7 +83,7 @@ $  make
 $  [sudo] make install
 ```
 
-**I have used [this] (http://opencircuitdesign.com/open_pdks/index.html)video by a channel named whyRD to install all these softwares**
+**I have used [this] ([http://opencircuitdesign.com/open_pdks/index.html](https://youtu.be/VCuyO7Chvc8?feature=shared))video by a channel named whyRD to install all these softwares**
 ---
 
 ## 2. Analysis of MOSFET models
