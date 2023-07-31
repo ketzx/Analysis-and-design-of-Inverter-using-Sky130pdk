@@ -60,6 +60,7 @@ $  cd netgen
 $  ./configure
 $  sudo make
 $  sudo make install
+```
 
 #### 1.1.4 Xschem
 ![image](https://user-images.githubusercontent.com/43693407/143311382-8cd3c1c9-dd07-4179-892d-52e9cf71e5a7.png)
@@ -82,7 +83,7 @@ $  make
 $  [sudo] make install
 ```
 
-**I have used[this](http://opencircuitdesign.com/open_pdks/index.html)video by a channel named whyRD to install all these softwares**
+**I have used [this] (http://opencircuitdesign.com/open_pdks/index.html)video by a channel named whyRD to install all these softwares**
 ---
 
 
