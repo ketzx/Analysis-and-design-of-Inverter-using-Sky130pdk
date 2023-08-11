@@ -1,4 +1,4 @@
-# Analysis and Design of Inverter
+# Analysis and Design of Inverter Using sky130pdk
 ### Design and Analysis of CMOS Inverter using the sky130 pdk and various open source tools
 ---
 The main aim of this experiment is to understand working of a cmos inverter and all its parameters,the design we will do is present under Skywater 130nm pdk and various open source tools like Xschem,NGspice
