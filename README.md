@@ -15,8 +15,6 @@ after all this we will work on the design of the cmos inverter which include mea
   - [1.2 PDK Setup](#12-PDK-setup)
 - [2. Analysis of MOSFET models](#2-Analysis-of-MOSFET-models)
   - [2.1 General MOS analysis](#21-General-MOS-analysis)
-  - [2.2 Strong 0 and Weak 1](#22-Strong-0-and-Weak-1)
-  - [2.3 Weak 0 and Strong 1](#23-Weak-0-and-Strong-1)
 - [3. CMOS Inverter Design and Analysis](#3-CMOS-Inverter-Design-and-Analysis)
   - [3.1 Why CMOS Circuits](#31-Why-CMOS-Circuits) 
   - [3.2 CMOS Inverter Analysis(Pre-Layout)](#32-CMOS-Inverter-Analysis-Pre-Layout)
@@ -95,7 +93,7 @@ ___highly recommended to check out the tutorials of xschem [here](http://repo.hu
 -->
 
 Here we are doing DC sweep and seeing how current looks like for different values of Vds.
-![NMOS CHAR SCHEMATIC](./Images/dc_sweep.png)
+![NMOS CHAR SCHEMATIC](./images/dc_sweep.jpg)
 
 The components used are:<br>
 ```nfet_01v8.sym``` - from xschem_sky130 library<br>
@@ -111,11 +109,11 @@ _example : plot -voltageds#branch_<br><br>
 
 Then you must see the plot below you, if you did a DC sweep on the __VDS__ source for different values of __VGS__ means first time vgs will be 0.5 v and we get plot current Ids then our vgs is 1.0 and lastly 1.5v:<br>
 
-![Ids vs Vgs](./Images/ids_vs_vds_for_diff_vgs.png)<br><br>
+![Ids vs Vgs](./images/ids_vs_vds_for_diff_vgs.jpg)<br><br>
 
 Similarly, when I sweep __VGS__ source for different values of __VDS__, I get the below plot:<br>
 
-![Ids vs Vds](./Images/ids_vs_vgs_for_diff_vds.png)<br><br>
+![Ids vs Vds](./images/ids_vs_vgs_for_diff_vdsjpg)<br><br>
 
 This definitely shows us that the threshold value is between __650mV to 750mV__.
 
@@ -176,7 +174,7 @@ All these parameters are what will always plague any analog design or design wit
 -->
 First I have created a inverter circuit as shown below on right hand side and then convert it into its equivalent symbol be pressing key A in xschem as shown in left side.
 
-![cmos_inverter_schematic](./Images/inv_and_symbol.png)<br>
+![cmos_inverter_schematic](./images/inv_and_symbol.jpg)<br>
 
 
 
@@ -193,12 +191,12 @@ DC analysis would be used to plot a Voltage Transfer Characteristics (VTC) curve
 So DC simulation will sweep the value of Vin from high to low to determine the  working of circuit with respect to different voltage levels in the input. 
 
 The following circuit is made for dc analysis :<br>
-![cmos inverter vtc](./Images/inv_test_dc.png)
+![cmos inverter vtc](./images/inv_test_dc.jpg)
 
 As we can see we are varying our vin from 0 to 1.8 volt at a step size of 1m volt. Now after saving the circuit we make its netlist and then simulate it. 
 
 Now we first plot vin vs vout and its graph is looking as :<br>
-![cmos inverter vtc](./Images/vin_vout_inv.png)
+![cmos inverter vtc](./images/vin_vout_inv.jpg)
 
 As it is clearly visible from the plot that __vm__ value is not equal to 0.9v which is for ideal case because of the widths of Nmos and Pmos transistor.
 - As we start to increase the size of NMOS our pull down resistance starts to increase which will try to pull output low fast i.e our VTC curve will shift towards Left.
@@ -206,7 +204,7 @@ As it is clearly visible from the plot that __vm__ value is not equal to 0.9v wh
 - So in our case we want __vn__ to be 0.9 means we want to shift our VTC curve towards right so for that we increase the size of PMOS.
 
  As we can see in the following figure that as we increase the width of PMOS to 3.5 we get __vm__ value to be equal to 0.9v means we are moving to ideal case. But this will increase the area requirement of our inverter which is its limitation. <br>
-![cmos inverter vtc](./Images/vin_vout_ideal.png)
+![cmos inverter vtc](./images/vin_vout_ideal.jpg)
  
 
 #### 3.2.2 Noise Margin
@@ -223,7 +221,7 @@ One can solve for them using the equations for individual transistors.
 - __Vth__ - Inverter Threshold voltage
   
 The following plot is observed when simulated :<br>
-![cmos inverter vtc](./Images/nm.png)
+![cmos inverter vtc](./images/nm.jpg)
 <!--
 A voltage transfer characteristics paints a plot that shows the behavior of a device when it's input is changed(full swing). It shows what happens to the output as input changes. In our case, for an inverter we can see a plot that is like a square wave(non ideal), that changes it's nature around 0.75 volts of input. So one can say that there are like 3 regions in the VTC curve, the portion where output is high, the place of transistion and the one where the output goes low. But actually there are __five regions of operation__ and they are based on the working of inverter constituents, that is the NMOS and the PMOS transistors with respect to the change in the input potential. <br>
 ![inverter-operating-regions](https://user-images.githubusercontent.com/43693407/143764318-d0893545-f47c-44b8-a27c-8de8bc4f0759.jpg)
@@ -260,7 +258,7 @@ Now, they aren't equal. But if we were to take some more effort to get the value
 #### 3.2.3 Delay Anaysis of our Inverter
 
 In the following diagram we can see the propogation delay high to low and low to high as well as rise and fall time.
-![cmos_inv_curr_plot](./Images/delay.jpg)<br>
+![cmos_inv_curr_plot](./images/delay.jpg)<br>
 
 Here we have to do transient analysis as we have to do analysis for delay and it is dependent on time.
 
@@ -269,7 +267,7 @@ __Tphl__ and __Tplh__ are not equal if sizes of NMOS and PMOS are not equal.
 - As o/p goes from high to low i.e. discharging NMOS is responsible.
 
 In the following diagram we can see the calculation for tplh. Similarly we can do calculation for tphl. So avg of these voth can be used to get propogation delay.
-![cmos_inv_curr_plot](./Images/prop_delay.png)<br>
+![cmos_inv_curr_plot](./images/prop_delay.jpg)<br>
 
 - Now if we decrease the rise and fall time of __Input__ i.e we make input more steeper then we will see that our propogation delay will start to reduce.
 -  When we are having series of inverter then this propogation delay is a great tool to tell the dealy of the circuit.
@@ -278,7 +276,7 @@ In the following diagram we can see the calculation for tplh. Similarly we can d
 Now to see independent delay of input we can see rise time and fall time as they are only dependent on time taken by output to go from 10% to 90% and vice versa respectively. 
 
 In the following diagram we can see the calculation for rise time. Similarly we can do calculation for fall time.
-![cmos_inv_curr_plot](./Images/rise.png)<br>
+![cmos_inv_curr_plot](./images/rise.jpg)<br>
 
 
 To reduce the delay we have some methods. We do not have any external load capacitor we are having only internal capictors i.e we are calculating as of now __inloaded delay__.
