@@ -258,7 +258,7 @@ Now, they aren't equal. But if we were to take some more effort to get the value
 #### 3.2.3 Delay Anaysis of our Inverter
 
 In the following diagram we can see the propogation delay high to low and low to high as well as rise and fall time.
-![cmos_inv_curr_plot](./images/delay.jpg)<br>
+![cmos_inv_curr_plot](./images/inv_delay.jpeg)<br>
 
 Here we have to do transient analysis as we have to do analysis for delay and it is dependent on time.
 
